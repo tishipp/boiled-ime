@@ -1,13 +1,13 @@
 # boiled-egg AutoHotkey 設定
 
-`boiled-egg-complete-plain-paste.ahk` は、ローマ字のIME再入力、IME状態の制御、Emacs風キー操作、プレーンテキスト貼り付けをまとめた AutoHotkey v2 スクリプトです。
+`boiled-egg.ahk` は、ローマ字のIME再入力、IME状態の制御、Emacs風キー操作、プレーンテキスト貼り付けをまとめた AutoHotkey v2 スクリプトです。
 
 ## 必要ファイル
 
 同じフォルダーに次の2ファイルを置きます。
 
 ```text
-boiled-egg-complete-plain-paste.ahk
+boiled-egg.ahk
 IMEv2.ahk
 ```
 
@@ -21,16 +21,16 @@ IMEv2.ahk
 
 `IMEv2.ahk` は、eamatさんが作成したAutoHotkey v1系のIME制御ライブラリ `IME.ahk` を基に、綾木 健一郎さんがAutoHotkey v2.0向けへ移植したIME制御関数群です。
 
-- 開発・配布リポジトリ: [k-ayaki/IMEv2.ahk](https://github.com/k-ayaki/IMEv2.ahk)
-- ソースファイル: [IMEv2.ahkを表示](https://github.com/k-ayaki/IMEv2.ahk/blob/master/IMEv2.ahk)
-- 解説記事: [AutoHotkey v2.0のIME制御用 関数群 IMEv2.ahk](https://qiita.com/kenichiro_ayaki/items/d55005df2787da725c6f)
+* 開発・配布リポジトリ: [k-ayaki/IMEv2.ahk](https://github.com/k-ayaki/IMEv2.ahk)
+* ソースファイル: [IMEv2.ahkを表示](https://github.com/k-ayaki/IMEv2.ahk/blob/master/IMEv2.ahk)
+* 解説記事: [AutoHotkey v2.0のIME制御用 関数群 IMEv2.ahk](https://qiita.com/kenichiro_ayaki/items/d55005df2787da725c6f)
 
 入手手順:
 
 1. [GitHubリポジトリ](https://github.com/k-ayaki/IMEv2.ahk)を開きます。
 2. リポジトリをZIPで取得するか、`IMEv2.ahk` のソース画面からファイルを保存します。
 3. 保存したファイル名が `IMEv2.ahk` であることを確認します。
-4. `boiled-egg-complete-plain-paste.ahk` と同じフォルダーへ配置します。
+4. `boiled-egg.ahk` と同じフォルダーへ配置します。
 
 Gitを使用する場合は、次のコマンドでも取得できます。
 
@@ -42,32 +42,32 @@ git clone https://github.com/k-ayaki/IMEv2.ahk.git
 
 ## 動作環境
 
-- Windows
-- AutoHotkey v2
-- 日本語IME
-- UI Automation対応アプリ、またはコピー操作で選択文字列を取得できるアプリ
+* Windows
+* AutoHotkey v2
+* 日本語IME
+* UI Automation対応アプリ、またはコピー操作で選択文字列を取得できるアプリ
 
 ## 起動方法
 
 1. AutoHotkey v2をインストールします。
-2. `boiled-egg-complete-plain-paste.ahk` と `IMEv2.ahk` を同じフォルダーへ置きます。
-3. `boiled-egg-complete-plain-paste.ahk` を実行します。
+2. `boiled-egg.ahk` と `IMEv2.ahk` を同じフォルダーへ置きます。
+3. `boiled-egg.ahk` を実行します。
 4. 古い版が起動中の場合は、先に終了してください。
 
 `#SingleInstance Force` を使用しているため、同じスクリプトを再実行すると旧インスタンスは置き換えられます。
 
 ## ホットキー一覧
 
-| ホットキー | 動作 |
-|---|---|
-| `Ctrl+J` | キャレット直前のローマ字列を選択してIMEへ再入力 |
-| `Ctrl+H` | Backspace |
-| `Ctrl+M` | IME OFF時はEnter、IME ON時はIMEをOFF |
-| `Ctrl+O` | IME ON/OFFを切り替え |
-| `無変換` | IME OFF |
-| `変換` | IME ON、変換モードを設定 |
-| `Ctrl+Win+Alt+V` | プレーンテキストとして貼り付け |
-| `Ctrl+Esc` | スクリプト終了 |
+|ホットキー|動作|
+|-|-|
+|`Ctrl+J`|キャレット直前のローマ字列を選択してIMEへ再入力|
+|`Ctrl+H`|Backspace|
+|`Ctrl+M`|IME OFF時はEnter、IME ON時はIMEをOFF|
+|`Ctrl+O`|IME ON/OFFを切り替え|
+|`無変換`|IME OFF|
+|`変換`|IME ON、変換モードを設定|
+|`Ctrl+Win+Alt+V`|プレーンテキストとして貼り付け|
+|`Ctrl+Esc`|スクリプト終了|
 
 AutoHotkeyの記号表現では、`^` がCtrl、`#` がWin、`!` がAltです。
 
@@ -104,11 +104,11 @@ a-z
 
 次のような非ASCII文字を検出すると、その位置で左スキャンを終了します。
 
-- ひらがな、カタカナ、漢字
-- 全角英数字
-- 全角記号
-- 全角の `？` や `！`
-- その他のUnicode文字
+* ひらがな、カタカナ、漢字
+* 全角英数字
+* 全角記号
+* 全角の `？` や `！`
+* その他のUnicode文字
 
 例:
 
@@ -136,27 +136,27 @@ UI AutomationのTextPatternを使用して、選択中の文字列を取得し�
 
 Excelでは次の3状態に対応します。
 
-#### 1. セルを選択した状態
+#### 1\. セルを選択した状態
 
-- Excelの編集ウィンドウがないことを確認
-- F2を送信
-- セル末尾の編集モードへ移行
-- クリップボード経路で文字列を取得
-- 対象文字列をDeleteで削除
-- IMEをONにしてローマ字を再入力
+* Excelの編集ウィンドウがないことを確認
+* F2を送信
+* セル末尾の編集モードへ移行
+* クリップボード経路で文字列を取得
+* 対象文字列をDeleteで削除
+* IMEをONにしてローマ字を再入力
 
-#### 2. セル内にキャレットがある状態
+#### 2\. セル内にキャレットがある状態
 
-- `EXCEL6` クラスの子ウィンドウを検出
-- すでに編集モードと判断
-- F2を追加送信しない
-- 現在のキャレット位置から左スキャン
+* `EXCEL6` クラスの子ウィンドウを検出
+* すでに編集モードと判断
+* F2を追加送信しない
+* 現在のキャレット位置から左スキャン
 
-#### 3. 数式バーを編集中
+#### 3\. 数式バーを編集中
 
-- UI AutomationまたはExcel編集状態を確認
-- F2を追加送信しない
-- 数式バー内のキャレット位置から左スキャン
+* UI AutomationまたはExcel編集状態を確認
+* F2を追加送信しない
+* 数式バー内のキャレット位置から左スキャン
 
 Excelのクリップボード結果にタブやCR/LFが含まれる場合は、セル範囲コピーとして扱い、不正な変換を防ぎます。
 
@@ -186,7 +186,7 @@ IME再入力時は次を行います。
 処理手順:
 
 1. 元のクリップボード全体を `ClipboardAll()` で保存
-2. `A_Clipboard` からテキストだけを取得
+2. `A\_Clipboard` からテキストだけを取得
 3. クリップボードをテキスト形式だけに一時変更
 4. `Ctrl+V` を送信
 5. 元のクリップボードを復元
@@ -200,22 +200,22 @@ IME再入力時は次を行います。
 スクリプト先頭の定数で調整できます。
 
 ```ahk
-EXCEL_F2_TIMEOUT_MS := 300
-EXCEL_DELETE_SETTLE_MS := 30
-EXCEL_IME_SETTLE_MS := 25
-CLIPBOARD_TIMEOUT_MS := 300
-UIA_BOUNDARY_TIMEOUT_MS := 180
-EXCEL_BOUNDARY_TIMEOUT_MS := 300
+EXCEL\_F2\_TIMEOUT\_MS := 300
+EXCEL\_DELETE\_SETTLE\_MS := 30
+EXCEL\_IME\_SETTLE\_MS := 25
+CLIPBOARD\_TIMEOUT\_MS := 300
+UIA\_BOUNDARY\_TIMEOUT\_MS := 180
+EXCEL\_BOUNDARY\_TIMEOUT\_MS := 300
 ```
 
-| 設定 | 用途 |
-|---|---|
-| `EXCEL_F2_TIMEOUT_MS` | F2後にExcel編集モードを確認する最大時間 |
-| `EXCEL_DELETE_SETTLE_MS` | Excelで対象文字列を削除した後の待機 |
-| `EXCEL_IME_SETTLE_MS` | ExcelでIME設定後に再入力まで待つ時間 |
-| `CLIPBOARD_TIMEOUT_MS` | 選択文字列のコピー完了待ち |
-| `UIA_BOUNDARY_TIMEOUT_MS` | UIA経路で境界文字を除外したことを確認する時間 |
-| `EXCEL_BOUNDARY_TIMEOUT_MS` | Excelのクリップボード経路で境界を確認する時間 |
+|設定|用途|
+|-|-|
+|`EXCEL\_F2\_TIMEOUT\_MS`|F2後にExcel編集モードを確認する最大時間|
+|`EXCEL\_DELETE\_SETTLE\_MS`|Excelで対象文字列を削除した後の待機|
+|`EXCEL\_IME\_SETTLE\_MS`|ExcelでIME設定後に再入力まで待つ時間|
+|`CLIPBOARD\_TIMEOUT\_MS`|選択文字列のコピー完了待ち|
+|`UIA\_BOUNDARY\_TIMEOUT\_MS`|UIA経路で境界文字を除外したことを確認する時間|
+|`EXCEL\_BOUNDARY\_TIMEOUT\_MS`|Excelのクリップボード経路で境界を確認する時間|
 
 Excelの再入力では、次のキー間隔を使用します。
 
@@ -239,17 +239,17 @@ boiled-egg-debug.log
 
 主なログ項目:
 
-| 項目 | 内容 |
-|---|---|
-| `start` | 処理開始、対象プロセス、ウィンドウID |
-| `excel-state` | Excelのセル選択、セル内編集、数式バーなどの判定結果 |
-| `scan` | 左スキャンで取得した文字列と方式 |
-| `boundary-detected` | 全角文字などの境界を検出 |
-| `boundary-verify` | 境界文字が選択範囲から外れたことを確認 |
-| `ime-on-ok` | IME ONを確認 |
-| `reinput` | IMEへ再入力する文字列 |
-| `success` | 正常終了と総所要時間 |
-| `exception` | エラー内容と行番号 |
+|項目|内容|
+|-|-|
+|`start`|処理開始、対象プロセス、ウィンドウID|
+|`excel-state`|Excelのセル選択、セル内編集、数式バーなどの判定結果|
+|`scan`|左スキャンで取得した文字列と方式|
+|`boundary-detected`|全角文字などの境界を検出|
+|`boundary-verify`|境界文字が選択範囲から外れたことを確認|
+|`ime-on-ok`|IME ONを確認|
+|`reinput`|IMEへ再入力する文字列|
+|`success`|正常終了と総所要時間|
+|`exception`|エラー内容と行番号|
 
 成功例:
 
@@ -293,13 +293,13 @@ success
 
 ### 全角文字まで選択される
 
-最新版ではコードポイントが `0x7F` を超える文字を境界にします。旧版ではなく、`boiled-egg-complete-plain-paste.ahk` を起動していることを確認してください。
+最新版ではコードポイントが `0x7F` を超える文字を境界にします。旧版ではなく、`boiled-egg.ahk` を起動していることを確認してください。
 
 ### プレーンテキスト貼り付けが動かない
 
-- Ctrl、Win、Altをすべて押しながらVを押す
-- クリップボードにテキストがあることを確認
-- 他の常駐ソフトが同じホットキーを使用していないか確認
+* Ctrl、Win、Altをすべて押しながらVを押す
+* クリップボードにテキストがあることを確認
+* 他の常駐ソフトが同じホットキーを使用していないか確認
 
 ## 終了
 
@@ -310,3 +310,4 @@ Ctrl+Esc
 ```
 
 または、タスクトレイのAutoHotkeyアイコンから終了します。
+
